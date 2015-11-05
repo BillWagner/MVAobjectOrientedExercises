@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace ClassExercises
 {
-    public class Teacher
+    public class Teacher : Person
     {
-        public Teacher(int v)
-        {
-            this.Id = v;
-        }
+        public Teacher(int v) : base(v) { }
 
         public void AddClassTitle(string title)
         {
@@ -23,10 +20,6 @@ namespace ClassExercises
 
         private readonly List<string> classTitles = new List<string>();
 
-        public int Id { get; }
-
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
         public string SubjectArea { get; set; }
         public IEnumerable<string> ClassTitles => classTitles;
     }
