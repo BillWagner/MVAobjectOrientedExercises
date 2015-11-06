@@ -22,5 +22,10 @@ namespace ClassExercises
 
         public string SubjectArea { get; set; }
         public IEnumerable<string> ClassTitles => classTitles;
+
+        public void RemoveClassTitle(string title)
+        {
+            classTitles.Remove(title);
+        }
     }
 }
