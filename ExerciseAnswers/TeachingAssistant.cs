@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassExercises
 {
-    public class TeachingAssistant : Student
+    public class TeachingAssistant : Student, ITeach
     {
         private string classOne;
         private string classTwo;

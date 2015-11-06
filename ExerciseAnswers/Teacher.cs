@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassExercises
 {
-    public class Teacher : Person
+    public class Teacher : Person, ITeach
     {
         public Teacher(int v) : base(v) { }
 

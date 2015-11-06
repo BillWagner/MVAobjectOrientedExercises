@@ -40,14 +40,30 @@ namespace ExerciseTests
         {
             var underTest = new Teacher(3);
             underTest.AddClassTitle("Remedial Math");
+            underTest.AddClassTitle("General Math");
             underTest.AddClassTitle("Advanced Math");
 
 
             Assert.Equal("Remedial Math", underTest.ClassTitles.First());
+            Assert.Equal("General Math", underTest.ClassTitles.Skip(1).First());
             Assert.Equal("Advanced Math", underTest.ClassTitles.Last());
-            Assert.Equal(2, underTest.ClassTitles.Count());
+            Assert.Equal(3, underTest.ClassTitles.Count());
         }
 
-        // Try to add duplicate.
+        [Fact]
+        public void DuplicateClassIsNotAdded()
+        {
+            var underTest = new Teacher(3);
+            underTest.AddClassTitle("Remedial Math");
+            underTest.AddClassTitle("General Math");
+            underTest.AddClassTitle("Advanced Math");
+            underTest.AddClassTitle("General Math");
+
+            Assert.Equal("Remedial Math", underTest.ClassTitles.First());
+            Assert.Equal("General Math", underTest.ClassTitles.Skip(1).First());
+            Assert.Equal("Advanced Math", underTest.ClassTitles.Last());
+            Assert.Equal(3, underTest.ClassTitles.Count());
+        }
+
     }
 }
