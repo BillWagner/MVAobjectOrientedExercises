@@ -19,6 +19,12 @@ namespace ClassExercises
             this.gradingFunc = gradingFunction;
         }
 
+        public void EnrollStudent(Student s)
+        {
+            if (!students.Any(s1 => s1.Id == s.Id))
+                students.Add(s);
+        }
+
         public void TurnInAssignment(Student enrollee, string assignment, string result)
         {
             var points = gradingFunc(assignment, result);
@@ -29,6 +35,8 @@ namespace ClassExercises
 
         public double AverageGPAForStudents()
         {
+            if (!students.Any())
+                return 0.0;
             return Enumerable.Average(students.Select(s => s.GradePointAverage));
         }
     }

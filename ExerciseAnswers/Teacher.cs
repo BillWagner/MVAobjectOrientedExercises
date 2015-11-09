@@ -21,25 +21,44 @@ namespace ClassExercises
     {
         public event EventHandler<AddClassEventArgs> OnClassAdded;
 
-        public Teacher(int v) : base(v) { }
+        public Teacher(int id) : base(id) { }
 
+        public string SubjectArea { get; set; }
+
+        private List<string> classTitles = new List<string>();
+
+        private int totalPointsGiven;
+        private int numberOfGradesGiven;
         public void AddClassTitle(string title)
         {
             if (!classTitles.Contains(title))
             {
                 classTitles.Add(title);
                 OnClassAdded?.Invoke(this, new AddClassEventArgs(title, this.SubjectArea));
+                var offering = new ClassOffering(this, (assignemt, result) => computePoints(assignemt, result));
+                School.Singleton().AddClassOffering(offering);
             }
         }
 
-        private readonly List<string> classTitles = new List<string>();
+        private int computePoints(string assignemt, string result)
+        {
+            var grade = new Random().Next(0, 100);
+            totalPointsGiven += grade;
+            numberOfGradesGiven++;
 
-        public string SubjectArea { get; set; }
-        public IEnumerable<string> ClassTitles => classTitles;
+            return grade;
+        }
+
+        public double AverageStudentGrade()
+        {
+            return (double)totalPointsGiven / (double)numberOfGradesGiven;
+        }
 
         public void RemoveClassTitle(string title)
         {
             classTitles.Remove(title);
         }
+
+        public IEnumerable<string> ClassTitles => classTitles;
     }
 }

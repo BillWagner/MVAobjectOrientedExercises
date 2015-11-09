@@ -62,6 +62,7 @@
     <Compile Include="AbstractBaseClassTests.cs" />
     <Compile Include="DelegateEventsTests.cs" />
     <Compile Include="EncapsulationTests.cs" />
+    <Compile Include="FunctionalProgrammingTests.cs" />
     <Compile Include="GenericsTests.cs" />
     <Compile Include="InterfaceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
