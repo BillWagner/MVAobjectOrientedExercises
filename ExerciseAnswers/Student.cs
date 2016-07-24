@@ -10,6 +10,7 @@ namespace ClassExercises
     {
         private int sumOfLetterGrades;
         private int totalClasesTaken;
+        private int totalPoints;
 
         public Student(int id) : base(id) { }
 
@@ -22,5 +23,11 @@ namespace ClassExercises
             this.sumOfLetterGrades += (int)letterGrade;
             this.totalClasesTaken++;
         }
+
+        internal void AssignGrade(string assignment, int points)
+        {
+            totalPoints += points;
+        }
+
     }
 }

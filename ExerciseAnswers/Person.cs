@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassExercises
 {
-    public class Person
+    public abstract class Person
     {
         protected Person(int id)
         {
